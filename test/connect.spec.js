@@ -59,11 +59,11 @@ describe("connect", () => {
 
     const wrapper = mount(<CounterApp />)
 
-    expect(store.tree.pubsub.subscriptions["/"]).to.not.be.empty
+    expect(store.subscriptions.subscribers).to.not.be.empty
 
     wrapper.instance().componentWillUnmount()
 
-    expect(store.tree.pubsub.subscriptions["/"]).to.be.empty
+    expect(store.subscriptions.subscribers).to.be.empty
   })
 
   it("provides a human-friendly displayName to the connected component", () => {

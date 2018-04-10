@@ -3,8 +3,7 @@ import sinon from "sinon"
 import { expect } from "chai"
 import { mount } from "enzyme"
 
-import Store from "arbor-store"
-import connect from "../src"
+import Arbor, { connect } from "../src"
 
 describe("connect", () => {
   const Counter = ({ counter }) => {
@@ -17,7 +16,7 @@ describe("connect", () => {
   }
 
   it("subscribes a React component to store mutations", () => {
-    const store = new Store({ counter: { count: 0 } })
+    const store = new Arbor({ counter: { count: 0 } })
     const CounterApp = connect(store)(Counter)
 
     const wrapper = mount(<CounterApp />)
@@ -36,7 +35,7 @@ describe("connect", () => {
   })
 
   it("can mutate state from within a stateless component", () => {
-    const store = new Store({ counter: { count: 0 } })
+    const store = new Arbor({ counter: { count: 0 } })
     const CounterApp = connect(store)(Counter)
 
     const wrapper = mount(<CounterApp />)
@@ -55,7 +54,7 @@ describe("connect", () => {
   })
 
   it("unsubscribes a React component from store mutations", () => {
-    const store = new Store({ counter: { count: 0 } })
+    const store = new Arbor({ counter: { count: 0 } })
     const CounterApp = connect(store)(Counter)
 
     const wrapper = mount(<CounterApp />)
@@ -68,7 +67,7 @@ describe("connect", () => {
   })
 
   it("provides a human-friendly displayName to the connected component", () => {
-    const store = new Store({ counter: { count: 0 } })
+    const store = new Arbor({ counter: { count: 0 } })
     const CounterApp = connect(store)(Counter)
 
     expect(CounterApp.displayName).to.eq("Connect(Counter)")
@@ -83,7 +82,7 @@ describe("connect", () => {
       </div>
     )
 
-    const store = new Store({ description: "foo" })
+    const store = new Arbor({ description: "foo" })
     const ConnectedApp = connect(store)(App)
 
     const wrapper = mount(<ConnectedApp name="bar" number={10}/>)

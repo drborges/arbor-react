@@ -1,6 +1,9 @@
 import React from "react"
+import Arbor from "arbor-store"
 
-export default function connect(store) {
+export default Arbor
+
+export function connect(store) {
   return function(Target) {
     return class extends React.Component {
       state = store.state

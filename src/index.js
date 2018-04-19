@@ -5,7 +5,7 @@ export default Arbor
 
 export function connect(store) {
   return function(Target) {
-    return class extends React.Component {
+    return class extends React.PureComponent {
       state = store.state
 
       static displayName = `Connect(${Target.displayName || Target.name})`

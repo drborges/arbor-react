@@ -1,6 +1,6 @@
 {
   "name": "arbor-react",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Provides a connect function to link an Arbor store with a React component",
   "author": "drborges <drborges.cic@gmail.com> (https://github.com/drborges)",
   "license": "MIT",
